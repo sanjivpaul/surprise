@@ -257,7 +257,20 @@
       });
 
       proposeButton.addEventListener("click", function () {
-        alert("Ruko Kal Milega!");
+        // alert("Ruko Kal Milega!");
+
+        // Ask for a password using a prompt
+        const password = prompt("Password do n 😋:");
+
+        // Check if the password is correct
+        if (password === "imissu") {
+          // Replace with your desired password
+          // If correct, navigate to the next page
+          window.location.href = "./propose/index.html"; // Replace with the path to your next file
+        } else {
+          // If incorrect, alert the user
+          alert("Password Galat Hai Yar Fir Se Try Karo!.");
+        }
       });
       // Create heart elements that fall
       function createHearts() {
