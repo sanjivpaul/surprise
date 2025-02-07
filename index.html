@@ -266,7 +266,16 @@
         if (password === "imissu") {
           // Replace with your desired password
           // If correct, navigate to the next page
-          window.location.href = "./propose/index.html"; // Replace with the path to your next file
+          // Ask if the user is ready
+          const isReady = confirm("Are you ready?");
+
+          // If the user clicks "Yes", navigate to the next page
+          if (isReady) {
+            window.location.href = "./propose/index.html"; // Navigate to your next page
+          } else {
+            // If the user clicks "No", do nothing (or alert)
+            alert("Take your time! We'll be here!");
+          }
         } else {
           // If incorrect, alert the user
           alert("Password Galat Hai Yar Fir Se Try Karo!.");
