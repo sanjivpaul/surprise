@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Falling Background with Cards</title>
+    <!-- FontAwesome for the heart icon -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        transition: background 0.5s ease; /* Smooth transition for background change */
+      }
+
+      /* Love Gradient Background */
+      .love-background {
+        background: linear-gradient(
+          45deg,
+          rgba(255, 111, 145, 0.6),
+          rgba(255, 51, 102, 0.6),
+          rgba(255, 0, 153, 0.6),
+          rgba(153, 0, 204, 0.6)
+        ); /* Love gradient with reduced opacity */
+        background-size: 400% 400%;
+        animation: gradientAnimation 10s ease infinite; /* Animate the gradient */
+      }
+
+      /* Heart Shape */
+      .heart {
+        position: absolute;
+        top: -50px;
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        transform: rotate(45deg);
+        animation: fall 5s infinite linear;
+      }
+
+      .heart:before,
+      .heart:after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border-radius: 50%;
+      }
+
+      .heart:before {
+        left: 0;
+        top: -15px;
+      }
+
+      .heart:after {
+        right: 0;
+        top: -15px;
+      }
+
+      /* Animation for falling hearts */
+      @keyframes fall {
+        0% {
+          top: -50px;
+          opacity: 1;
+        }
+        100% {
+          top: 100%;
+          opacity: 0;
+        }
+      }
+
+      /* Love Gradient Animation */
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .container {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 10;
+      }
+
+      /* Style the card container */
+      .card {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.2
+        ); /* Semi-transparent background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        width: 200px;
+        text-align: center;
+        backdrop-filter: blur(10px); /* Apply blur effect */
+        border: 2px solid rgba(255, 255, 255, 0.3); /* Light border for more glass effect */
+        transition: transform 0.3s ease;
+        z-index: 20;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      /* Glass Effect Button */
+      .btn {
+        padding: 10px 20px;
+        background-color: rgba(
+          255,
+          182,
+          193,
+          0.8
+        ); /* Rose color with transparency */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        backdrop-filter: blur(5px); /* Slight blur effect for the glass look */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:hover {
+        background-color: rgba(255, 105, 180, 0.8); /* Lighter pink on hover */
+        transform: scale(1.05);
+      }
+
+      /* Slider Switch Styles */
+      .slider-container {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .slider-label {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #4caf50;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      .heart-icon {
+        font-size: 24px;
+        color: red;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Button Cards -->
+      <div class="card">
+        <h2>Rose</h2>
+        <button class="btn" id="roseButton">Click Me!</button>
+      </div>
+      <div class="card">
+        <h2>Propose</h2>
+        <button class="btn" id="proposeBtn">Click Me!</button>
+      </div>
+
+      <!-- Toggle Button for Background with Heart Icon -->
+      <div class="slider-container">
+        <span class="slider-label">On Karo n 😋 🥹</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleSwitch" />
+          <span class="slider"></span>
+        </label>
+        <i class="fas fa-heart heart-icon" id="heartIcon"></i>
+      </div>
+    </div>
+
+    <script>
+      const roseButton = document.getElementById("roseButton");
+      const proposeButton = document.getElementById("proposeBtn");
+      // Add an event listener for the click event
+      roseButton.addEventListener("click", function () {
+        // Redirect to the new HTML file
+        // window.location.href = "./rose/index.html"; // Replace with the path to your next file
+
+        // Ask for a password using a prompt
+        const password = prompt("Please enter the password:");
+
+        // Check if the password is correct
+        if (password === "iloveu") {
+          // Replace with your desired password
+          // If correct, navigate to the next page
+          window.location.href = "./rose/index.html"; // Replace with the path to your next file
+        } else {
+          // If incorrect, alert the user
+          alert("Incorrect password. Access denied.");
+        }
+      });
+
+      proposeButton.addEventListener("click", function () {
+        alert("Please Wait For Tomorrow!");
+      });
+      // Create heart elements that fall
+      function createHearts() {
+        for (let i = 0; i < 50; i++) {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+
+          // Randomize the position and animation duration
+          heart.style.left = `${Math.random() * 100}vw`; // Random left position across screen
+          heart.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random fall speed between 2 and 5 seconds
+          document.body.appendChild(heart);
+        }
+      }
+
+      createHearts();
+
+      // Get the switch and heart icon
+      const toggleSwitch = document.getElementById("toggleSwitch");
+      const body = document.body;
+      const heartIcon = document.getElementById("heartIcon");
+
+      toggleSwitch.addEventListener("change", () => {
+        body.classList.toggle("love-background"); // Toggle the class for the love background
+        if (body.classList.contains("love-background")) {
+          heartIcon.style.color = "#ff4d4d"; // Change heart color to red when background is active
+        } else {
+          heartIcon.style.color = "red"; // Default heart color when background is off
+        }
+      });
+    </script>
+  </body>
+</html>
