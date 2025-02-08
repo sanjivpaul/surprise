@@ -49,6 +49,38 @@ var love = setInterval(function () {
   );
 }, 500);
 
+// Get references to the elements
+const autoAudio = document.getElementById("auto-audio");
+const toggleAudio = document.getElementById("toggle-audio");
+const toggle = document.getElementById("audio-toggle");
+
+// Play the automatic song when the page loads
+autoAudio.play();
+
+// Event listener for the toggle button
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    // Pause the auto-playing song
+    autoAudio.pause();
+
+    toggleAudio.play();
+  } else {
+    // Pause the toggle song
+    toggleAudio.pause();
+
+    // Resume the auto-playing song
+    autoAudio.play();
+  }
+});
+
+// Event listener for when the toggle song ends (to restart if necessary)
+toggleAudio.addEventListener("ended", () => {
+  if (toggle.checked) {
+    toggleAudio.currentTime = 0; // Reset toggle song to the beginning
+    toggleAudio.play(); // Restart the toggle song if the toggle is still on
+  }
+});
+
 var i = 0;
 var txt1 =
   "Hi Babes.....!  <<   Suno n Hum Tumhe Kuch Special Batana Chahte hai.  <<<  To, Sab Kuchh Jara Dhayan Se Padhna Thik Hai...!                                                                           > Jab Humne Tumhe Pehli Bar Dekha < तू हमरा खातिर कुछ खास लागत बाड़ू।  <<   Jaise Jaise Din Bite            < Hum Pass Aate Gaye Ek Dusre Ko Jante Gaye....! <<                           Hum isaka kaaran nahin jaanata ki tumhare vichaar hamesha mere man mein kyon goonjate rehte hain...!                                                     > रउरा बारे में हर बात हमरा खातिर हमेशा दिलचस्प होला...!                     << Tum Humesa se Humare liye khas ho...!                                                     > Hum is duniya me kisi bhee cheez se zyaada apane maata-pita se pyaar karate hain....!                    << अब तू एकमात्र अइसन आदमी हउअ जेकरा से हम अपना माई-बाबूजी के बराबर प्यार करेनी....!                                                             >I Love U <जानेमन.....! <<<< हमरा के एक मौका दीं हमार प्यार साबित करे के ...! <<<< Tumse Biha Karenge ! <<<< ताकि हमनी के मिल के छठ पूजा कर सकीले!|                  <<<< हमरा के एक मौका दीं हमार प्यार साबित करे के ...!";

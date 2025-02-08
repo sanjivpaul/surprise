@@ -78,3 +78,51 @@ body {
     top: 110%;
   }
 }
+
+/* Style for the slider toggle */
+.slider-container {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.slider-label {
+  margin-right: 10px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.slider-toggle {
+  width: 60px;
+  height: 34px;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ccc;
+  outline: none;
+  border-radius: 34px;
+  cursor: pointer;
+}
+
+.slider-toggle:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.slider-toggle:checked {
+  background-color: #4caf50;
+}
+
+.slider-toggle:checked:before {
+  transform: translateX(26px);
+}
