@@ -223,6 +223,11 @@
         <button class="btn" id="proposeBtn">Click Me!</button>
       </div>
 
+      <div class="card">
+        <h2>Chocolate</h2>
+        <button class="btn" id="chocolateBtn">Click Me!</button>
+      </div>
+
       <!-- Toggle Button for Background with Heart Icon -->
       <div class="slider-container">
         <span class="slider-label">On Karo n 😋 🥹</span>
@@ -281,6 +286,14 @@
           alert("Password Galat Hai Yar Fir Se Try Karo!.");
         }
       });
+
+      chocolateBtn.addEventListener("click", function () {
+        // Redirect to the new HTML file
+        // window.location.href = "./rose/index.html"; // Replace with the path to your next file
+
+        alert("abhi time hai babu 😋");
+      });
+
       // Create heart elements that fall
       function createHearts() {
         for (let i = 0; i < 50; i++) {
